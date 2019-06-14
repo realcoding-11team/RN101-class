@@ -55,13 +55,28 @@ export default class WeatherDetailScreen extends React.Component {
     let humidity=this.state.main.humidity;
     let celsiusMin=this.state.main.temp_min - 273.15;
     let celsiusMax=this.state.main.temp_max - 273.15;
-
+    let weathers=this.state.weather[0].main;
+    let imagefile;
+    if(weathers==="haze"){
+      imagefile='./haze.png';
+    } else if(weathers==="clear"){
+      imagefile='./clear.png';
+    } else if(weathers==="moon"){
+      imagefile='./moon.png';
+    } else if(weathers==="snow"){
+      imagefile='./snow.png';
+    } else if(weathers==="clouds"){
+      imagefile='./cloud.png';
+    } else {
+      imagefile='./cloud.png';
+    }
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>온도: {celsius.toFixed(1)}</Text>
-        <Text style={styles.text}>습도: {humidity.toFixed(1)}</Text>
-        <Text style={styles.text}>최저기온: {celsiusMin.toFixed(1)}</Text>
-        <Text style={styles.text}>최고기온: {celsiusMax.toFixed(1)}</Text>
+        <Image style={styles.cimage} source={require('./snow.png')}/>
+        <Text style={styles.ctext}>{celsius.toFixed(0)}<Image style={styles.cimage} source={require('./c.png')} /></Text>
+        <Text style={styles.text}>습도: {humidity.toFixed(0)}%</Text>
+        <Text style={styles.text}>최저기온: {celsiusMin.toFixed(0)}</Text>
+        <Text style={styles.text}>최고기온: {celsiusMax.toFixed(0)}</Text>
       </View>
     );
   }
@@ -80,6 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: "#f1f2f6",
+    height:'auto',
   },
   loading: {
     backgroundColor: '#222f3e',
@@ -92,5 +108,15 @@ const styles = StyleSheet.create({
     left:100,
     height:200,
     width:200,
+  },
+  ctext: {
+    fontSize: 80,
+    textAlign: 'center',
+    color: "#f1f2f6",
+    height:'auto',
+  },
+  cimage: {
+    height:30,
+    width:30,
   },
 });
