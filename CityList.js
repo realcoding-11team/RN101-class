@@ -1,6 +1,7 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import { Constants } from 'expo';
+import Arrow from './arrow.png';
 
 export default class CityList extends React.Component {
   static navigationOptions = {
@@ -47,7 +48,7 @@ export default class CityList extends React.Component {
   renderItem(city) {
     return (
       <TouchableOpacity style={styles.item} onPress={() => this.onPressCity(city)}>
-
+      <Image style={styles.imagestyle} source={require('./arrow.png')} />
         <Text style={styles.text}>{city}
         </Text>
       </TouchableOpacity>
@@ -67,10 +68,6 @@ export default class CityList extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  navigationOptions: {
-    backgroundColor: '#222f3e',
-  },
-
   container: {
     flex: 1,
     backgroundColor: '#222f3e', // #fff
