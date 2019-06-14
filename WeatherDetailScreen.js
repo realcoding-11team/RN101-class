@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,Image} from 'react-native';
 import { Constants } from 'expo';
+import loading from './loading.gif';
 
 export default class WeatherDetailScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -44,8 +45,8 @@ export default class WeatherDetailScreen extends React.Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <View style={styles.container}>
-          <Text>데이터를 불러오는 중입니다.</Text>
+        <View style={styles.loading}>
+        <Image style={styles.imagestyle} source={require('./loading.gif')}/>
         </View>
       )
     }
@@ -58,9 +59,9 @@ export default class WeatherDetailScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>온도: {celsius.toFixed(1)}</Text>
-        <Text style={styles.text}>습도: {celsius.toFixed(1)}</Text>
-        <Text style={styles.text}>최저기온: {celsius.toFixed(1)}</Text>
-        <Text style={styles.text}>최고기온: {celsius.toFixed(1)}</Text>
+        <Text style={styles.text}>습도: {humidity.toFixed(1)}</Text>
+        <Text style={styles.text}>최저기온: {celsiusMin.toFixed(1)}</Text>
+        <Text style={styles.text}>최고기온: {celsiusMax.toFixed(1)}</Text>
       </View>
     );
   }
@@ -70,13 +71,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#222f3e',
-    marginTop: Constants.statusBarHeight,
+    marginTop: 0,
     fontSize: 20,
+    // flexDirection:'row',
+    alignItems:'center',
   },
   text: {
     fontSize: 20,
     textAlign: 'center',
-
     color: "#f1f2f6",
+  },
+  loading: {
+    backgroundColor: '#222f3e',
+    flex: 1,
+    flexDirection:'row',
+    alignItems:'center',
+  },
+  imagestyle: {
+    position:'absolute',
+    left:100,
+    height:200,
+    width:200,
   },
 });
