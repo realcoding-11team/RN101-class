@@ -6,6 +6,15 @@ export default class WeatherDetailScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: `Weather Info: ${navigation.getParam('city', 'Unknown')}`,
+      headerStyle: {
+        backgroundColor: '#222f3e',
+        height:50,
+      },
+      headerTitleStyle:{
+        fontSize: 20,
+        textAlign: 'center',
+        color: "#f1f2f6",
+      },
     };
   };
 
@@ -42,10 +51,16 @@ export default class WeatherDetailScreen extends React.Component {
     }
 
     let celsius = this.state.main.temp - 273.15;
+    let humidity=this.state.main.humidity;
+    let celsiusMin=this.state.main.temp_min - 273.15;
+    let celsiusMax=this.state.main.temp_max - 273.15;
 
     return (
       <View style={styles.container}>
-        <Text>온도: {celsius.toFixed(1)}</Text>
+        <Text style={styles.text}>온도: {celsius.toFixed(1)}</Text>
+        <Text style={styles.text}>습도: {celsius.toFixed(1)}</Text>
+        <Text style={styles.text}>최저기온: {celsius.toFixed(1)}</Text>
+        <Text style={styles.text}>최고기온: {celsius.toFixed(1)}</Text>
       </View>
     );
   }
@@ -54,7 +69,14 @@ export default class WeatherDetailScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#222f3e',
     marginTop: Constants.statusBarHeight,
+    fontSize: 20,
+  },
+  text: {
+    fontSize: 20,
+    textAlign: 'center',
+
+    color: "#f1f2f6",
   },
 });
