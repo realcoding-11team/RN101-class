@@ -29,10 +29,10 @@ export default class WeatherDetailScreen extends React.Component {
 
   componentDidMount() {
     const { navigation } = this.props;
-    // const city = navigation.getParam('city', null);
-    const city = 'Daejeon';
-
-    fetch(`http://demo6468405.mockable.io/weather-crawlers/current-weathers/by-city-name/${city}`)
+    const city = navigation.getParam('city', null);
+    //const city = 'Daejeon';
+    //fetch(`http://demo6468405.mockable.io/weather-crawlers/cities`)
+    fetch(`http://192.168.100.175:8080/weather-crawler/current-weathers/by-city-name/${city}`)
       .then(response => response.json())
       .then(info => {
         this.setState({
@@ -64,11 +64,8 @@ export default class WeatherDetailScreen extends React.Component {
                 <Image style={styles.wimagestyle} source={require('./haze.png')} />
                 <Text style={styles.ctext}>{celsius.toFixed(0)}<Image style={styles.cimage} source={require('./c.png')} /></Text>
                 <Text style={styles.text}>현재습도: {humidity.toFixed(0)} % </Text>
-                <Text></Text>
                 <Text style={styles.text}>최저기온: {celsiusMin.toFixed(0)} °C</Text>
-                <Text></Text>
                 <Text style={styles.text}>최고기온: {celsiusMax.toFixed(0)} °C</Text>
-                <Text></Text>
               </View>
             );
     else if(weathers == 'Snow')
@@ -81,6 +78,16 @@ export default class WeatherDetailScreen extends React.Component {
                 <Text style={styles.text}>최고기온: {celsiusMax.toFixed(0)} °C</Text>
               </View>
             );
+    else if(weathers == 'Rain')
+            return (
+                  <View style={styles.container}>
+                    <Image style={styles.wimagestyle} source={require('./rain.png')} />
+                    <Text style={styles.ctext}>{celsius.toFixed(0)}<Image style={styles.cimage} source={require('./c.png')} /></Text>
+                    <Text style={styles.text}>현재습도: {humidity.toFixed(0)} % </Text>
+                    <Text style={styles.text}>최저기온: {celsiusMin.toFixed(0)} °C</Text>
+                    <Text style={styles.text}>최고기온: {celsiusMax.toFixed(0)} °C</Text>
+                  </View>
+                );
     else if(weathers == 'Clear')
          return (
                <View style={styles.container}>
@@ -94,7 +101,7 @@ export default class WeatherDetailScreen extends React.Component {
     else
          return (
                <View style={styles.container}>
-                 <Image style={styles.imagestyle} source={require('./cloud.png')} />
+                 <Image style={styles.wimagestyle} source={require('./cloud.png')} />
                  <Text style={styles.ctext}>{celsius.toFixed(0)}<Image style={styles.cimage} source={require('./c.png')} /></Text>
                  <Text style={styles.text}>현재습도: {humidity.toFixed(0)} % </Text>
                  <Text style={styles.text}>최저기온: {celsiusMin.toFixed(0)} °C</Text>
