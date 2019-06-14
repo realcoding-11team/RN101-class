@@ -9,6 +9,7 @@ export default class CityList extends React.Component {
     headerStyle: {
       backgroundColor: '#222f3e',
       height:50,
+      margin:0,
     },
     headerTitleStyle:{
       fontSize: 20,
@@ -91,5 +92,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: "#f1f2f6",
+  },
+  imagestyle: {
+    position: 'absolute',
+    right: 10,
+    height:30,
+    width:30,
   },
 });
