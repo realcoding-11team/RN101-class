@@ -6,7 +6,7 @@ import loading from './loading.gif';
 export default class WeatherDetailScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: `Weather Info: ${navigation.getParam('city', 'Unknown')}`,
+      title: `${navigation.getParam('city', 'Unknown')}`,
       headerStyle: {
         backgroundColor: '#222f3e',
         height:50,
