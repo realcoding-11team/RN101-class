@@ -12,6 +12,12 @@ export default class CityList extends React.Component {
       margin:0,
     },
     headerTitleStyle:{
+
+      fontSize: 20,
+      textAlign: 'center',
+      color: "#f1f2f6",
+    },
+    titleStyle:{
       fontSize: 20,
       textAlign: 'center',
       color: "#f1f2f6",
@@ -72,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#222f3e', // #fff
-    marginTop: Constants.statusBarHeight,
+    marginTop: 0,
   },
 
   item: {
